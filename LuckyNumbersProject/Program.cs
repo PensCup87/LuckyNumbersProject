@@ -25,6 +25,8 @@ namespace LuckyNumbersProject
             Console.WriteLine("\nI meant select 6 numbers within the rage " + initialNumber + " and " + secondNumber);
 
             int userGuess = 0;
+            int[] randomNumber = { };
+            int[] luckyGuesses = { };
 
             //int guessCount = 0;
             //do
@@ -62,21 +64,54 @@ namespace LuckyNumbersProject
             //}
             //while (guessCount > 6);
 
-            int[] luckyGuesses = new int[6];
-            for(int i = 0; i <= 5; i++)
+            //PART 1 REVISED, Sorry Daniel!
+
+            luckyGuesses = new int[5];
+            for (int i = 0; i <= 5; i++)
             {
-                if(userGuess < initialNumber || userGuess > secondNumber)
-                {
-                    Console.WriteLine("Enter a number within your range.");
-                }
                 Console.WriteLine("Give your lucky digit: ");
                 userGuess = int.Parse(Console.ReadLine());
+
+                luckyGuesses[i] = userGuess;
+                if (userGuess >= initialNumber && userGuess <= secondNumber)
+            {
+                Console.WriteLine("Enter a number within your range.");
             }
 
             
 
+               
+
+            }
+            //Generating a Random Number 
+            //Then putting randomNumber into an Array
+            Random rand = new Random();
+            for (int i = 0; i < randomNumber.Length; i++)
+            {
+                
+                randomNumber[i] = rand.Next(initialNumber, secondNumber);
+                Console.Write("Lucky Number: {i} ", randomNumber[i]);
+                
+            }
+
+            //Compares Array Values for a Match
+            //Start with a Loop so the check happens more than once
+            for(int i = 0; i < 6; i++)
+            {
+                if (luckyGuesses.Contains(randomNumber[i]))
+                {
+                    Console.WriteLine("You have a match");
+                }
+            }
 
 
-        }
+
+
+
+
+
+
+
+            }
     }
 }
