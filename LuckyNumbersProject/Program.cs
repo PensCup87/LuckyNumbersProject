@@ -12,21 +12,15 @@ namespace LuckyNumbersProject
         {
             Console.WriteLine("Welcome to the Camp Crystal Lake Casino Night!");
             Console.WriteLine("\nI'm Jason, and this is a number guesing game that might return a prize.");
-            Console.WriteLine("\nI'll need two numbers to start.");
+            Console.WriteLine("\nI'll need a number for the starting point and ending point.");
             Console.WriteLine("\nLet's begin, choose a number, that will start a number range");
             int initialNumber = int.Parse(Console.ReadLine().Trim());
-            Console.WriteLine();
             Console.WriteLine("Jason thanks you, and can you give me another number, to end the number range?");
             int secondNumber = int.Parse(Console.ReadLine().Trim());
-
-            Console.WriteLine();
-            Console.WriteLine();
+            
             Console.WriteLine("Now that our range is set, select 6 lives, oop my mistake");
             Console.WriteLine("\nI meant select 6 numbers within the rage " + initialNumber + " and " + secondNumber);
 
-            int userGuess = 0;
-            int[] randomNumber = { };
-            int[] luckyGuesses = { };
 
             //int guessCount = 0;
             //do
@@ -66,41 +60,45 @@ namespace LuckyNumbersProject
 
             //PART 1 REVISED, Sorry Daniel!
 
-            luckyGuesses = new int[5];
-            for (int i = 0; i <= 5; i++)
-            {
+            //int userGuess = 0;
+            int[] luckyGuesses = new int[6];
+
+            for (int j = 0; j <luckyGuesses.Length; j++)
+                {
                 Console.WriteLine("Give your lucky digit: ");
-                userGuess = int.Parse(Console.ReadLine());
+                luckyGuesses[j] = int.Parse(Console.ReadLine());
 
-                luckyGuesses[i] = userGuess;
-                if (userGuess >= initialNumber && userGuess <= secondNumber)
-            {
-                Console.WriteLine("Enter a number within your range.");
-            }
-
+                //while(userGuess < initialNumber && userGuess > secondNumber)
             
+                 }
 
-               
 
-            }
+
+
             //Generating a Random Number 
             //Then putting randomNumber into an Array
+            int[] beerGuy = new int[6];
             Random rand = new Random();
-            for (int i = 0; i < randomNumber.Length; i++)
+            
+            for (int i = 0; i < beerGuy.Length; i++)
             {
-                
-                randomNumber[i] = rand.Next(initialNumber, secondNumber);
-                Console.Write("Lucky Number: {i} ", randomNumber[i]);
-                
+                int randomNumber = rand.Next(initialNumber, secondNumber) + 1;
+                beerGuy[i] = randomNumber;
+                Console.WriteLine("Lucky Number: " + beerGuy[i]);
+
             }
 
             //Compares Array Values for a Match
             //Start with a Loop so the check happens more than once
-            for(int i = 0; i < 6; i++)
+            int equalArrays = 0;
+            for (int j = 0; j < luckyGuesses.Length; j++)
             {
-                if (luckyGuesses.Contains(randomNumber[i]))
+                for (int i = 0; i < beerGuy.Length; i++)
                 {
-                    Console.WriteLine("You have a match");
+                    if (luckyGuesses[j] == beerGuy[i])
+                    {
+                        Console.WriteLine("You have " + equalArrays++ + " matches");
+                    }
                 }
             }
 
@@ -109,9 +107,32 @@ namespace LuckyNumbersProject
 
 
 
+                //PART 3
+                int possibleJackPot = 6000;
 
 
 
-            }
+
+
+            //PART 4
+            Console.WriteLine("Would you like to play again?");
+            string rePlay = Console.ReadLine().ToLower().Trim();
+
+
+
+
+
+
+            ////user Winnings
+
+
+
+
+
+
+
+
+
+        }
     }
 }
