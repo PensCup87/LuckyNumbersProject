@@ -123,37 +123,51 @@ namespace LuckyNumbersProject
                 }
                 Console.WriteLine("You have " + totalMatches + " matches");
 
-                int possibleJackPot = 20000;
-                int prizeCalc = 0;
+                double possibleJackPot = 20000;
+                double oneMatch = possibleJackPot * (1/6);
+                double twoMatch = possibleJackPot * (2/6);
+                double threeMatch = possibleJackPot * (.5);
+                double fourMatch = possibleJackPot * (4/6);
+                double fiveMatch = possibleJackPot * (5/6);
+                double winnerWinnerChickenDinner = possibleJackPot;
 
+                //MONEY TIME
                 
-
-
-
+                if(totalMatches == 1)
+                {
+                    Console.WriteLine("You won " + oneMatch);
+                }
+                else if(totalMatches == 2)
+                {
+                    Console.WriteLine("You won " + twoMatch);
+                }
+                else if(totalMatches == 3)
+                {
+                    Console.WriteLine("You won " + threeMatch);
+                }
+                else if(totalMatches == 4)
+                {
+                    Console.WriteLine("You won " + fourMatch);
+                }
+                else if(totalMatches == 5)
+                {
+                    Console.WriteLine("You won " + fiveMatch);
+                }
+                else if(totalMatches == 6)
+                {
+                    Console.WriteLine("You won " + winnerWinnerChickenDinner);
+                }
 
 
                 //PART 4
                 
                 Console.WriteLine("Would you like to play again?");
                 rePlay = Console.ReadLine().ToLower().Trim();
-
-
-
-
-
-
-                ////user Winnings
-
-
-
-
-
-
-
-            }
-            while (rePlay == "yes");
-            if(rePlay == "no")
-            {
+                
+                 }
+                while (rePlay == "yes");
+                if(rePlay == "no")
+                {
                 Console.WriteLine("Thanks for playing");
             }
         }
