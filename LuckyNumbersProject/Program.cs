@@ -16,9 +16,9 @@ namespace LuckyNumbersProject
                 Console.WriteLine("Welcome to the Camp Crystal Lake Casino Night!");
                 Console.WriteLine("\nI'm Jason, and this is a number guesing game that might return a prize.");
                 Console.WriteLine("\nI'll need a number for the starting point and ending point.");
-                Console.WriteLine("\nLet's begin, choose a number, that will start a number range");
+                Console.WriteLine("\nLet's begin, choose a number, that will start your number range");
                 int initialNumber = int.Parse(Console.ReadLine().Trim());
-                Console.WriteLine("Jason thanks you, and can you give me another number, to end the number range?");
+                Console.WriteLine("Jason thanks you, and can you give me another number, to end the range?");
                 int secondNumber = int.Parse(Console.ReadLine().Trim());
 
                 Console.WriteLine("Now that our range is set, select 6 lives, oop my mistake");
@@ -68,8 +68,8 @@ namespace LuckyNumbersProject
 
                 for (int j = 0; j < luckyGuesses.Length; j++)
                 {
-                    Console.WriteLine("Give your lucky digit: ");
-                    luckyGuesses[j] = int.Parse(Console.ReadLine());
+                    Console.WriteLine("What is your lucky digit: ");
+                    luckyGuesses[j] = int.Parse(Console.ReadLine().Trim());
 
                     //while(userGuess < initialNumber && userGuess > secondNumber)
 
@@ -80,7 +80,7 @@ namespace LuckyNumbersProject
 
                 //Generating a Random Number 
                 //Then putting randomNumber into an Array
-                int randomDigit = 0;
+                
                 int[] beerGuy = new int[6];
                 Random rand = new Random();
 
@@ -98,14 +98,14 @@ namespace LuckyNumbersProject
                 //Compares Array Values for a Match
                 //Start with a Loop so the check happens more than once
                 int totalMatches = 0;
-                int equalArrays = 0;
+                
                 for (int j = 0; j < luckyGuesses.Length; j++)
                 {
                     for (int i = 0; i < beerGuy.Length; i++)
                     {
                         if (luckyGuesses[j] == beerGuy[i])
                         {
-                            totalMatches = equalArrays++;
+                            totalMatches++;
                             
                         }
                     }
@@ -113,51 +113,56 @@ namespace LuckyNumbersProject
 
 
                 //Comparing Human Numbers to Computer NUmbers
-
+                
                 foreach(int digit in luckyGuesses)
                 {
                     if(beerGuy.Contains(digit))
                     {
                         totalMatches++;
+                        
                     }
                 }
                 Console.WriteLine("You have " + totalMatches + " matches");
 
-                double possibleJackPot = 20000;
-                double oneMatch = possibleJackPot * (1/6);
-                double twoMatch = possibleJackPot * (2/6);
-                double threeMatch = possibleJackPot * (.5);
-                double fourMatch = possibleJackPot * (4/6);
-                double fiveMatch = possibleJackPot * (5/6);
-                double winnerWinnerChickenDinner = possibleJackPot;
+                int possibleJackPot = 20000;
+                double winnings;
 
                 //MONEY TIME
                 
                 if(totalMatches == 1)
                 {
-                    Console.WriteLine("You won " + oneMatch);
+                    winnings = possibleJackPot * (.1667);
+                    Console.WriteLine("You have won $" + winnings);
                 }
                 else if(totalMatches == 2)
                 {
-                    Console.WriteLine("You won " + twoMatch);
+                    winnings = possibleJackPot * (.3333);
+                    Console.WriteLine("You have won $" + winnings);
                 }
                 else if(totalMatches == 3)
                 {
-                    Console.WriteLine("You won " + threeMatch);
+                    winnings = possibleJackPot * .5;
+                    Console.WriteLine("You have won $" + winnings);
                 }
                 else if(totalMatches == 4)
                 {
-                    Console.WriteLine("You won " + fourMatch);
+                    winnings  = possibleJackPot * (.6667);
+                    Console.WriteLine("You have won $" + winnings);
                 }
                 else if(totalMatches == 5)
                 {
-                    Console.WriteLine("You won " + fiveMatch);
+                    winnings = possibleJackPot * (.83333);
+                    Console.WriteLine("You have won $" + winnings);
                 }
                 else if(totalMatches == 6)
                 {
-                    Console.WriteLine("You won " + winnerWinnerChickenDinner);
+                    winnings = possibleJackPot;
+                    Console.WriteLine("You have won $" + winnings);
                 }
-
+                else if (totalMatches == 0)
+                {
+                    Console.WriteLine("You have not matches, sorry about your luck");
+                }
 
                 //PART 4
                 
